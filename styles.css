@@ -1,9 +1,15 @@
 :root {
   --body-background: linear-gradient(#f0f9ff, #d6c5f2);
+  --navbar-background: rgba(240, 249, 255, 0.8);
+  --text-color: #333333;
+  --hover-color: #62d180;
 }
 
 body {
   background: var(--body-background);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .page-three,
@@ -33,28 +39,140 @@ body {
 /* Navbar styling */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Places logo on the left and links on the right */
-  align-items: center; /* Vertically aligns the items */
-  padding: 10px 20px;
-  background-color: #f0f9ff; /* Light blue background */
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: var(--navbar-background);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
 
-.logo img {
-  max-height: 50px; /* Adjust the size of the logo */
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--text-color);
 }
 
 .nav-links {
-  display: flex; /* Aligns the nav items horizontally */
+  display: flex;
 }
 
 .nav-links a {
-  margin-left: 20px; /* Adds space between each link */
+  margin-left: 25px;
   text-decoration: none;
-  color: #333333; /* Dark gray text */
+  color: var(--text-color);
   font-size: 16px;
-  transition: color 0.3s;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .nav-links a:hover {
-  color: #62d180; /* Vibrant green on hover */
+  color: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+/* Page styling */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.page.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Button styling */
+.cta-button {
+  display: inline-block;
+  background-color: var(--hover-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #4fa868;
+  transform: translateY(-2px);
+}
+
+/* Easter egg */
+.easter-egg {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.easter-egg:hover {
+  opacity: 1;
+}
+
+.easter-egg::before {
+  content: "🥚";
+  font-size: 24px;
+}
+
+.easter-egg-content {
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.easter-egg-content.visible {
+  display: block;
 }
